@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vehicle Chatbot</title>
+  <style>
+    body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative; 
+}
+
+body::before {
+  content: ""; 
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('carchatbot.png');  
+  background-size: cover; 
+  background-position: center; 
+  filter: blur(2px); 
+  z-index: -1; 
+}
+
+    #chat-container {
+      width: 380px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 480px;
+      background-image: url(carchatbot.png);
+    }
+    #chatbox {
+      flex-grow: 1;
+      padding: 15px;
+      background: #f9f9f9;
+      border-bottom: 2px solid #ddd;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }  
+    .message {
+      padding: 10px 15px;
+      border-radius: 20px;
+      max-width: 75%;
+      position: relative;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .user {
+      align-self: flex-end;
+      background: #007bff;
+      color: white;
+    }
+    .bot {
+      align-self: flex-start;
+      background: #f1f1f1;
+      color: #333;
+    }
+    .message::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      border-left: 12px solid transparent;
+      border-right: 12px solid transparent;
+      z-index: 1;
+    }
+    .user::before {
+      right: -12px;
+      border-top: 12px solid #007bff;
+    }
+    .bot::before {
+      left: -12px;
+      border-top: 12px solid #f1f1f1;
+    }
+    #input-container {
+      display: flex;
+      padding: 10px;
+      background: #ffffff;
+      border-top: 2px solid #ddd;
+      justify-content: space-between;
+      align-items: center;
+      background-image: url(carchatbot.png);
+    }
+    #user-input {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      border-radius: 25px;
+      outline: none;
+      font-size: 16px;
+      background-color: #f2f2f2;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+
+    #user-input:focus {
+      background-color: #fff;
+      border: 2px solid #007bff;
+    }
+
+    #send-button {
+      padding: 12px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #send-button:hover {
+      background-color: #0056b3;
+    }
+
+    .typing-indicator {
+      width: 60px;
+      height: 5px;
+      border-radius: 10px;
+      background-color: #007bff;
+      animation: typing 1.2s infinite ease-in-out;
+    }
+
+    h1{
+      
+      border-radius: 10px;
+      color:#f4f4f4;
+      padding: 2px;
+      font-family: 'Times New Roman', Times, serif;
+      background-color: #007bff;
+    }
+    .background-image{
+      background-image: url(carchatbot.png);
+      background-size: cover;
+      
+    }
+    @keyframes typing {
+      0%, 100% {
+        width: 60px;
+      }
+      50% {
+        width: 20px;
+      }
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat-container" >
+    <center><h1>CarGenie</h1></center>
+    <div id="chatbox"></div>
+    <div id="input-container">
+      <input type="text" id="user-input" placeholder="Ask me..." />
+      <button id="send-button" onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+  <script src="script.js">
+    
+  </script>
+</body>
+</html>
